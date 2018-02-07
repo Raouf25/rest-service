@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+
+    <property name="city_file" value="/db/changelog/csv-data/raouf_test_city.csv"/>
+
+    <changeSet id="Lot 1 : 1-init city table" author="Raouf MAKHLOUF" dbms="h2">
+        <loadData tableName="city" file="${city_file}" encoding="UTF-8"/>
+    </changeSet>
+
+</databaseChangeLog>
