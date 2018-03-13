@@ -27,8 +27,9 @@
         <assertj.version>3.8.0</assertj.version>
         <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
 		<commons-lang3.version>3.0</commons-lang3.version>
+		<swagger-codegen-maven-plugin.version>2.3.1</swagger-codegen-maven-plugin.version>
+		<default.package>com.raouf.backend</default.package>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -123,6 +124,28 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
+			<!-- Automatically generate APIs classes based on OpenAPI (Swagger) specs
+			See : https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen-maven-plugin
+			Apis was described in api.yaml
+			Execute mvn clean swagger-codegen:generate (into thetis-api module) to	generate sources in target/generated-sources -->
+
+				<plugin>
+					<groupId>io.swagger</groupId>
+					<artifactId>swagger-codegen-maven-plugin</artifactId>
+					<version>${swagger-codegen-maven-plugin.version}</version>
+					<configuration>
+						<output>${project.build.directory}/generated-sources</output>
+						<apiPackage>${default.package}.controller</apiPackage>
+						<modelPackage>${default.package}.api.model</modelPackage>
+						<invokerPackage>${default.package}.handler</invokerPackage>
+						<inputSpec>${project.basedir}/src/docs/api.yaml</inputSpec>
+						<language>spring</language>
+						<!-- <environmentVariables> <apiDocs>false</apiDocs> </environmentVariables> -->
+					</configuration>
+				</plugin>
+
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-09-20T08:55:39.049Z")
 
 @Controller
 public class CitiesApiController implements CitiesApi {
