@@ -1,14 +1,11 @@
 package com.raouf.backend.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.Objects;
 
 /**
  * VehicleModelCU
@@ -20,9 +17,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VehicleModelCU   {
-  @JsonProperty("id")
-  private Long id = null;
-
   @JsonProperty("modelName")
   private String modelName = null;
 
