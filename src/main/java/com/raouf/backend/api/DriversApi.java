@@ -3,6 +3,7 @@ package com.raouf.backend.api;
 import com.raouf.backend.api.model.Driver;
 import com.raouf.backend.api.model.DriverCU;
 import com.raouf.backend.api.model.Error400;
+import com.raouf.backend.common.RaoufApiEndpoints;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ public interface DriversApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Succesful operation", response = Driver.class),
         @ApiResponse(code = 400, message = "Malformed driver create request", response = Error400.class) })
-    @RequestMapping(value = "/drivers",
+    @RequestMapping(value = RaoufApiEndpoints.DRIVERS,
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
@@ -32,7 +33,7 @@ public interface DriversApi {
         @ApiResponse(code = 204, message = "Succesful operation"),
         @ApiResponse(code = 400, message = "Malformed driver delete request", response = Error400.class),
         @ApiResponse(code = 404, message = "No driver found with this Id") })
-    @RequestMapping(value = "/drivers/{driverId}",
+    @RequestMapping(value = RaoufApiEndpoints.DRIVERS_DETAIL,
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteDriver(@ApiParam(value = "the driver ID",required=true) @PathVariable("driverId") Long driverId);
@@ -43,7 +44,7 @@ public interface DriversApi {
         @ApiResponse(code = 200, message = "Successfull operation", response = Driver.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Malformed status", response = Error400.class),
         @ApiResponse(code = 404, message = "Driver not found") })
-    @RequestMapping(value = "/drivers",
+    @RequestMapping(value = RaoufApiEndpoints.DRIVERS,
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<Driver>> getAllDrivers();
@@ -54,7 +55,7 @@ public interface DriversApi {
         @ApiResponse(code = 200, message = "Successfull operation", response = Driver.class),
         @ApiResponse(code = 400, message = "Malformed offices request", response = Error400.class),
         @ApiResponse(code = 404, message = "No driver found with this driverId") })
-    @RequestMapping(value = "/drivers/{driverId}",
+    @RequestMapping(value = RaoufApiEndpoints.DRIVERS_DETAIL,
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Driver> getDriver(@ApiParam(value = "the driver ID",required=true) @PathVariable("driverId") Long driverId);
@@ -65,7 +66,7 @@ public interface DriversApi {
         @ApiResponse(code = 200, message = "Succesful operation", response = Driver.class),
         @ApiResponse(code = 400, message = "Malformed driver update request", response = Error400.class),
         @ApiResponse(code = 404, message = "No driver found with this Id") })
-    @RequestMapping(value = "/drivers/{driverId}",
+    @RequestMapping(value = RaoufApiEndpoints.DRIVERS_DETAIL,
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.PATCH)

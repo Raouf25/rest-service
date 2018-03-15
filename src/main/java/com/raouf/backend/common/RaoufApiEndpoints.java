@@ -28,4 +28,14 @@ public abstract class RaoufApiEndpoints {
     public static final String LOGOUT = "/logout";
 
     public static final String CITIES_SEARCH = "/cities/search";
+
+    public static final String VEHICLES = "/vehicles";
+    public static final String VEHICLES_DETAIL = "/vehicles/{vehicleId}";
+
+    public static final String DRIVERS = "/drivers";
+    public static final String DRIVERS_DETAIL = "/drivers/{driverId}";
+
+    public static final String TRIPS = "/trips";
+    public static final String TRIPS_DETAIL = "/trips/{tripId}";
+    public static final String TRIPS_AFFECTATIONS = "/affect/{driverId}/drive/{vehicleId}/for/{tripId}";
 }

@@ -1,6 +1,7 @@
 package com.raouf.backend.api;
 
 import com.raouf.backend.api.model.Error400;
+import com.raouf.backend.common.RaoufApiEndpoints;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ public interface AffectApi {
         @ApiResponse(code = 200, message = "Succesful operation"),
         @ApiResponse(code = 400, message = "Malformed trip delete request", response = Error400.class),
         @ApiResponse(code = 404, message = "No driver found with this Id") })
-    @RequestMapping(value = "/affect/{driverId}/drive/{vehicleId}/for/{tripId}",
+    @RequestMapping(value = RaoufApiEndpoints.TRIPS_AFFECTATIONS,
         produces = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<Void> affectDriverVehicleToTrip(@ApiParam(value = "the driver ID",required=true) @PathVariable("driverId") Long driverId,@ApiParam(value = "the vehicle ID",required=true) @PathVariable("vehicleId") Long vehicleId,@ApiParam(value = "the trip ID",required=true) @PathVariable("tripId") Long tripId);

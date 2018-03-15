@@ -8,6 +8,7 @@ package com.raouf.backend.api;
 import com.raouf.backend.api.model.Error400;
 import com.raouf.backend.api.model.Vehicle;
 import com.raouf.backend.api.model.VehicleCU;
+import com.raouf.backend.common.RaoufApiEndpoints;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public interface VehiclesApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Succesful operation", response = Vehicle.class),
         @ApiResponse(code = 400, message = "Malformed vehicle creation request", response = Error400.class) })
-    @RequestMapping(value = "/vehicles",
+    @RequestMapping(value = RaoufApiEndpoints.VEHICLES,
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
@@ -37,7 +38,7 @@ public interface VehiclesApi {
         @ApiResponse(code = 204, message = "Succesful operation"),
         @ApiResponse(code = 400, message = "Malformed vehicle delete request", response = Error400.class),
         @ApiResponse(code = 404, message = "No vehicle found with this Id") })
-    @RequestMapping(value = "/vehicles/{vehicleId}",
+    @RequestMapping(value = RaoufApiEndpoints.VEHICLES_DETAIL,
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteVehicle(@ApiParam(value = "the vehicle Id",required=true) @PathVariable("vehicleId") Long vehicleId);
@@ -48,7 +49,7 @@ public interface VehiclesApi {
         @ApiResponse(code = 200, message = "Successfull operation", response = Vehicle.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Malformed status", response = Error400.class),
         @ApiResponse(code = 404, message = "Vehicle not found") })
-    @RequestMapping(value = "/vehicles",
+    @RequestMapping(value = RaoufApiEndpoints.VEHICLES,
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<Vehicle>> getAllVehicle();
@@ -59,7 +60,7 @@ public interface VehiclesApi {
         @ApiResponse(code = 200, message = "Successfull operation", response = Vehicle.class),
         @ApiResponse(code = 400, message = "Malformed vehicle ID", response = Error400.class),
         @ApiResponse(code = 404, message = "Vehicle not found") })
-    @RequestMapping(value = "/vehicles/{vehicleId}",
+    @RequestMapping(value = RaoufApiEndpoints.VEHICLES_DETAIL,
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Vehicle> getVehicle(@ApiParam(value = "the member Id",required=true) @PathVariable("vehicleId") Long vehicleId);
@@ -70,7 +71,7 @@ public interface VehiclesApi {
         @ApiResponse(code = 200, message = "Succesful operation", response = Vehicle.class),
         @ApiResponse(code = 400, message = "Malformed vehicle update request", response = Error400.class),
         @ApiResponse(code = 404, message = "No vehicle found with this Id") })
-    @RequestMapping(value = "/vehicles/{vehicleId}",
+    @RequestMapping(value = RaoufApiEndpoints.VEHICLES_DETAIL,
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.PATCH)
