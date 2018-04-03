@@ -3,8 +3,10 @@ package com.raouf.backend.api;
 //import com.vitodoc.backend.AbstractVitodocTest;
 //import com.vitodoc.backend.VitodocConfigurationTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.raouf.backend.security.SecurityTestConfig;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
         import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,6 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
  */
 @RunWith(SpringRunner.class)
 @EnableSpringDataWebSupport
+@Import({SecurityTestConfig.class})
 //@ActiveProfiles("test")
 public abstract class AbstractRaoufApiTest {
 

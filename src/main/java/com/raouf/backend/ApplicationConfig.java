@@ -1,7 +1,8 @@
 package com.raouf.backend;
 
-import com.raouf.backend.config.SwaggerConfig;
 import com.raouf.backend.common.filter.ApiOriginFilter;
+import com.raouf.backend.config.SwaggerConfig;
+import com.raouf.backend.security.SecurityConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import java.util.concurrent.Executor;
 
 @Configuration
 @ComponentScan(basePackages = "com.raouf.backend")
-@Import(value = SwaggerConfig.class)
+@Import({SwaggerConfig.class,SecurityConfig.class})
 public class ApplicationConfig {
 
 
